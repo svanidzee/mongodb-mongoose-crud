@@ -1,8 +1,10 @@
 import mongoose from 'mongoose';
 import Movie from './Model/Movie.js';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 mongoose.connect(
-  'mongodb+srv://svanidzeee:palasio223@api1.cf46g0v.mongodb.net/?retryWrites=true&w=majority',
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@api1.cf46g0v.mongodb.net/?retryWrites=true&w=majority`,
 );
 
 // find document by id:
@@ -26,10 +28,12 @@ console.log(movie3);
 var movie4 = await Movie.find();
 console.log(movie4);
 
+// where method
 var movie5 = await Movie.where('title')
   .equals('Armour of God 2: Operation Condor')
   .select('title author');
 console.log(movie5);
 
+// exists method
 var movie6 = await Movie.exists({ title: 'Armour of God 2: Operation Condor' });
 console.log(movie6);

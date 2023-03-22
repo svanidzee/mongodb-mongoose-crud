@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 import Movie from './Model/Movie.js';
 import Imdb from './Model/Imdb.js';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 mongoose.connect(
-  'mongodb+srv://svanidzeee:palasio223@api1.cf46g0v.mongodb.net/?retryWrites=true&w=majority',
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@api1.cf46g0v.mongodb.net/?retryWrites=true&w=majority`,
 );
 
 const imdb1 = await Imdb.create({
