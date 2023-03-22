@@ -10,7 +10,7 @@ const movieSchema = new Schema({
     required: true,
   },
   year: {
-    type: Date,
+    type: Number,
     default: false,
   },
   director: {
