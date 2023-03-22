@@ -25,5 +25,11 @@ const movieSchema = new Schema({
   },
 });
 
+// middleware in mogoose
+movieSchema.pre('save', function (next) {
+  this.updatedAt = Date.now();
+  next();
+});
+
 const Movie = model('Movie', movieSchema);
 export default Movie;
